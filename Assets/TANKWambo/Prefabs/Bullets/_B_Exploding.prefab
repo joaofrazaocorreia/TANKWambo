@@ -236,9 +236,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _showInfo: 1
   _explanation: "Initialize bullet angle, velocity and ricochet counter when it spawns\n----------------\nWhen
-    this object is created:\n First, \n          select a random angle between 90
-    and 90 and set the velocity of _B_Exploding's rigid body towards that direction,
-    with a magnitude of 10; angles are relative to the object rotation\n"
+    this object is created:\n          select a random angle between 90 and 90 and
+    set the velocity of _B_Exploding's rigid body towards that direction, with a
+    magnitude of 12; angles are relative to the object rotation\n"
   description: Initialize bullet angle, velocity and ricochet counter when it spawns
   enableTrigger: 1
   allowRetrigger: 0
@@ -260,8 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: Select a random angle between 90 and 90 and set the velocity of Bullet's
-    rigid body towards that direction, with a magnitude of 10; angles are relative
+  _explanation: Select a random angle between 90 and 90 and set the velocity of _B_Exploding's
+    rigid body towards that direction, with a magnitude of 12; angles are relative
     to the object rotation
   description: 
   enableAction: 1
@@ -280,7 +280,7 @@ MonoBehaviour:
   useRandom: 1
   startAngle: 90
   endAngle: 90
-  speedRange: {x: 10, y: 10}
+  speedRange: {x: 12, y: 12}
   minVelocity: {x: 10, y: 10}
   maxVelocity: {x: 10, y: 10}
   clampSpeed: 0
@@ -300,8 +300,8 @@ MonoBehaviour:
   _showInfo: 1
   _explanation: "Destroys bullet when colliding with a Tank, Bullet or a Destructable
     object.\n----------------\nWhen a collision with a bounding volume with tags
-    [Tank,Bullet,Destructable,Explosion] starts:\n First, \n          destroys this
-    object\n          spawns prefab _M_Explosion at the position of this object (_B_Exploding)\n"
+    [Tank,Bullet,Destructable,Explosion] starts:\n          destroys this object\n         
+    spawns prefab _M_Explosion at the position of this object (_B_Exploding)\n"
   description: Destroys bullet when colliding with a Tank, Bullet or a Destructable
     object.
   enableTrigger: 1
@@ -333,9 +333,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: "When a collision with a trigger with tags [Mine] starts:\n First,
-    \n          destroys this object\n          spawns prefab _M_Explosion at the
-    position of this object (_B_Exploding)\n"
+  _explanation: "When a collision with a trigger with tags [Mine] starts:\n         
+    destroys this object\n          spawns prefab _M_Explosion at the position of
+    this object (_B_Exploding)\n"
   description: 
   enableTrigger: 1
   allowRetrigger: 1
@@ -363,21 +363,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: "If (_B_Exploding == 0) and When a collision with a bounding volume
-    with tags [Wall] starts:\n First, \n          destroys this object\n         
-    spawns prefab _M_Explosion at the position of this object (_B_Exploding)\n"
+  _explanation: "If ((_B_Exploding == 0) and When a collision with a bounding volume
+    with tags [Wall] starts:\n          destroys this object\n          spawns prefab
+    _M_Explosion at the position of this object (_B_Exploding)\n"
   description: 
   enableTrigger: 1
   allowRetrigger: 1
   hasPreconditions: 1
   preConditions:
-  - valueHandler: {fileID: 679489578000293668}
+  - negate: 0
+    valueHandler: {fileID: 679489578000293668}
     variable: {fileID: 0}
     valueType: 0
     tag: {fileID: 0}
     sourceTransform: {fileID: 0}
     rigidBody: {fileID: 0}
     axis: 0
+    probe: {fileID: 0}
     comparison: 0
     value: 0
     percentageCompare: 0
@@ -426,22 +428,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: "Ricochet off walls.\n----------------\nIf (_B_Exploding > 0) and
-    When a collision with a bounding volume with tags [Wall] starts:\n First, \n         
-    plays sound ricochet_sound at volume 1 and at pitch 1\n          adds -1 to variable
+  _explanation: "Ricochet off walls.\n----------------\nIf ((_B_Exploding > 0) and
+    When a collision with a bounding volume with tags [Wall] starts:\n          plays
+    sound ricochet_sound at volume 1 and at pitch 1\n          adds -1 to variable
     _B_Exploding\n"
   description: Ricochet off walls.
   enableTrigger: 1
   allowRetrigger: 1
   hasPreconditions: 1
   preConditions:
-  - valueHandler: {fileID: 679489578000293668}
+  - negate: 0
+    valueHandler: {fileID: 679489578000293668}
     variable: {fileID: 0}
     valueType: 0
     tag: {fileID: 0}
     sourceTransform: {fileID: 0}
     rigidBody: {fileID: 0}
     axis: 0
+    probe: {fileID: 0}
     comparison: 3
     value: 0
     percentageCompare: 0

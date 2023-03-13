@@ -25,9 +25,7 @@ GameObject:
   - component: {fileID: 1072935403278815858}
   - component: {fileID: 1072935403278815859}
   - component: {fileID: 926356100632247210}
-  - component: {fileID: 2136943336312890518}
   - component: {fileID: 2460339910135214941}
-  - component: {fileID: 609450140246460295}
   m_Layer: 0
   m_Name: _T_Bomber_Tank
   m_TagString: Untagged
@@ -326,9 +324,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: "When ((DistanceTo(Tag[Player]) > 5):\n          enables component
-    _T_Bomber_Tank (MovementXY) on _T_Bomber_Tank\n          enables component _T_Bomber_Tank
-    (MovementRotate) on _T_Bomber_Tank\n"
+  _explanation: "When ((DistanceTo(Tag[Player]) > 7) and (not (ProbeIntersect(_T_Bomber_Tank,[Wall,Destructable]):\n         
+    enables component _T_Bomber_Tank (MovementXY) on _T_Bomber_Tank\n          enables
+    component _T_Bomber_Tank (MovementRotate) on _T_Bomber_Tank\n"
   description: 
   enableTrigger: 1
   allowRetrigger: 1
@@ -362,7 +360,19 @@ MonoBehaviour:
     axis: 0
     probe: {fileID: 0}
     comparison: 3
-    value: 5
+    value: 7
+    percentageCompare: 0
+  - negate: 1
+    valueHandler: {fileID: 0}
+    variable: {fileID: 0}
+    valueType: 10
+    tag: {fileID: 11400000, guid: 1e7c9d7a9c88a3b41bc3a78e56999984, type: 2}
+    sourceTransform: {fileID: 0}
+    rigidBody: {fileID: 0}
+    axis: 0
+    probe: {fileID: 926356100632247210}
+    comparison: 3
+    value: 7
     percentageCompare: 0
   elseActions: []
 --- !u!114 &1072935403278815863
@@ -378,7 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: "When ((DistanceTo(Tag[Player]) <= 5):\n          disables component
+  _explanation: "When ((DistanceTo(Tag[Player]) <= 7):\n          disables component
     _T_Bomber_Tank (MovementXY) on _T_Bomber_Tank\n          disables component _T_Bomber_Tank
     (MovementRotate) on _T_Bomber_Tank\n"
   description: 
@@ -414,7 +424,7 @@ MonoBehaviour:
     axis: 0
     probe: {fileID: 0}
     comparison: 2
-    value: 5
+    value: 7
     percentageCompare: 0
   elseActions: []
 --- !u!114 &1072935403278815856
@@ -534,43 +544,6 @@ MonoBehaviour:
   targetTransform: {fileID: 0}
   dirTransform: {fileID: 0}
   dirTag: {fileID: 11400000, guid: 1e7c9d7a9c88a3b41bc3a78e56999984, type: 2}
---- !u!114 &2136943336312890518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072935403720094895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3203f38d4afc6a4283618fa1df06ecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showInfo: 1
-  _explanation: "When ((ProbeIntersect(_T_Bomber_Tank,[Wall,Destructable]):\n         
-    [NULL]\n"
-  description: 
-  enableTrigger: 1
-  allowRetrigger: 1
-  hasPreconditions: 0
-  preConditions: []
-  actions:
-  - delay: 0
-    action: {fileID: 0}
-  conditions:
-  - negate: 0
-    valueHandler: {fileID: 0}
-    variable: {fileID: 0}
-    valueType: 10
-    tag: {fileID: 0}
-    sourceTransform: {fileID: 0}
-    rigidBody: {fileID: 0}
-    axis: 0
-    probe: {fileID: 926356100632247210}
-    comparison: 0
-    value: 0
-    percentageCompare: 0
-  elseActions: []
 --- !u!114 &2460339910135214941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,58 +596,6 @@ MonoBehaviour:
     value: 5
     percentageCompare: 0
   elseActions: []
---- !u!114 &609450140246460295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072935403720094895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3203f38d4afc6a4283618fa1df06ecc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _showInfo: 1
-  _explanation: "When (not (ProbeIntersect(_T_Bomber_Tank,[Wall,Destructable]):\n         
-    enables component _T_Bomber_Tank (MovementXY) on _T_Bomber_Tank\n          enables
-    component _T_Bomber_Tank (MovementRotate) on _T_Bomber_Tank\n"
-  description: 
-  enableTrigger: 1
-  allowRetrigger: 1
-  hasPreconditions: 0
-  preConditions:
-  - negate: 0
-    valueHandler: {fileID: 0}
-    variable: {fileID: 0}
-    valueType: 8
-    tag: {fileID: 11400000, guid: 1e7c9d7a9c88a3b41bc3a78e56999984, type: 2}
-    sourceTransform: {fileID: 0}
-    rigidBody: {fileID: 0}
-    axis: 0
-    probe: {fileID: 0}
-    comparison: 3
-    value: 5
-    percentageCompare: 0
-  actions:
-  - delay: 0
-    action: {fileID: 1072935403278815857}
-  - delay: 0
-    action: {fileID: 1072935403278815858}
-  conditions:
-  - negate: 1
-    valueHandler: {fileID: 0}
-    variable: {fileID: 0}
-    valueType: 10
-    tag: {fileID: 11400000, guid: 1e7c9d7a9c88a3b41bc3a78e56999984, type: 2}
-    sourceTransform: {fileID: 0}
-    rigidBody: {fileID: 0}
-    axis: 0
-    probe: {fileID: 926356100632247210}
-    comparison: 3
-    value: 5
-    percentageCompare: 0
-  elseActions: []
 --- !u!1 &1072935404507520549
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +641,7 @@ GameObject:
   - component: {fileID: 1072935404856066173}
   - component: {fileID: 1072935404856066172}
   - component: {fileID: 1072935404856066163}
+  - component: {fileID: 7485139918648523730}
   m_Layer: 0
   m_Name: Shoot
   m_TagString: Untagged
@@ -849,9 +771,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: "If (DistanceTo(Tag[Player]) <= 5) and Every 2 seconds, trigger the
-    actions::\n First, \n          spawns prefab _B_Exploding at the position of
-    Bullet Spawner\n          plays sound shoot_sound at volume 1 and at pitch 1\n"
+  _explanation: "If ((DistanceTo(Tag[Player]) <= 20) and (not (ProbeIntersect(Shoot,[Wall,Destructable])
+    and Every 1.5 seconds, trigger the actions::\n          spawns prefab _B_Exploding
+    at the position of Bullet Spawner\n          plays sound shoot_sound at volume
+    1 and at pitch 1\n"
   description: 
   enableTrigger: 1
   allowRetrigger: 1
@@ -867,7 +790,19 @@ MonoBehaviour:
     axis: 0
     probe: {fileID: 0}
     comparison: 2
-    value: 5
+    value: 20
+    percentageCompare: 0
+  - negate: 1
+    valueHandler: {fileID: 0}
+    variable: {fileID: 0}
+    valueType: 10
+    tag: {fileID: 11400000, guid: 1e7c9d7a9c88a3b41bc3a78e56999984, type: 2}
+    sourceTransform: {fileID: 0}
+    rigidBody: {fileID: 0}
+    axis: 0
+    probe: {fileID: 7485139918648523730}
+    comparison: 2
+    value: 10
     percentageCompare: 0
   actions:
   - delay: 0
@@ -875,7 +810,7 @@ MonoBehaviour:
   - delay: 0
     action: {fileID: 1072935404856066163}
   startTriggered: 0
-  timeInterval: {x: 2, y: 2}
+  timeInterval: {x: 1.5, y: 1.5}
 --- !u!114 &1072935404856066172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,3 +871,32 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 9a7412deda79a0c4b9329ec79063ce22, type: 3}
   volume: {x: 1, y: 1}
   pitch: {x: 1, y: 1}
+--- !u!114 &7485139918648523730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072935404856066161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8696953f8839d49b7b322bdf5b8a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showInfo: 1
+  _explanation: 'Casts a ray in the direction of the closest object with tag [Player],
+
+    detecting
+    intersections with objects with tags [Wall,Destructable]'
+  description: 
+  type: 0
+  direction: 5
+  radius: 20
+  minDistance: 0
+  maxDistance: 1000
+  tags:
+  - {fileID: 11400000, guid: 5009fc6200a650247b168e79eceb4906, type: 2}
+  - {fileID: 11400000, guid: f1bf613cb53582041bf2e99c2eaa77e5, type: 2}
+  targetTransform: {fileID: 0}
+  dirTransform: {fileID: 0}
+  dirTag: {fileID: 11400000, guid: 1e7c9d7a9c88a3b41bc3a78e56999984, type: 2}
