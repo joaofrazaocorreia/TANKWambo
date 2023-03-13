@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _showInfo: 1
   _explanation: "When a collision with a bounding volume with tags [Bullet,Explosion]
-    starts:\n First, \n          destroys this object\n          plays sound explosion_sound
+    starts:\n          destroys this object\n          plays sound explosion_sound
     at volume 1 and at pitch 1\n"
   description: 
   enableTrigger: 1
@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 757703880140207681}
   - component: {fileID: 757703880140207686}
   - component: {fileID: 757703880140207687}
+  - component: {fileID: 4644233089335983339}
   m_Layer: 0
   m_Name: Shoot
   m_TagString: Untagged
@@ -435,21 +436,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showInfo: 1
-  _explanation: "If (TagCount([Unknown]) == 0) and Every 3 seconds, trigger the actions::\nFirst,
-    \n          spawns prefab _B_Sniper at the position of Bullet Spawner\n         
-    plays sound shoot_sound at volume 1 and at pitch 1\n"
+  _explanation: "If (not (ProbeIntersect(Shoot,[Wall,Destructable]) and Every 3 seconds,
+    trigger the actions::\n          spawns prefab _B_Sniper at the position of Bullet
+    Spawner\n          plays sound shoot_sound at volume 1 and at pitch 1\n"
   description: 
   enableTrigger: 1
   allowRetrigger: 1
   hasPreconditions: 1
   preConditions:
-  - valueHandler: {fileID: 0}
+  - negate: 1
+    valueHandler: {fileID: 0}
     variable: {fileID: 0}
-    valueType: 1
+    valueType: 10
     tag: {fileID: 0}
     sourceTransform: {fileID: 0}
     rigidBody: {fileID: 0}
     axis: 0
+    probe: {fileID: 4644233089335983339}
     comparison: 0
     value: 0
     percentageCompare: 0
@@ -480,13 +483,15 @@ MonoBehaviour:
   actionTags: []
   hasConditions: 0
   actionConditions:
-  - valueHandler: {fileID: 0}
+  - negate: 0
+    valueHandler: {fileID: 0}
     variable: {fileID: 0}
     valueType: 0
     tag: {fileID: 0}
     sourceTransform: {fileID: 0}
     rigidBody: {fileID: 0}
     axis: 0
+    probe: {fileID: 0}
     comparison: 0
     value: 0
     percentageCompare: 0
@@ -518,3 +523,32 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 9a7412deda79a0c4b9329ec79063ce22, type: 3}
   volume: {x: 1, y: 1}
   pitch: {x: 1, y: 1}
+--- !u!114 &4644233089335983339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757703880140207685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a8696953f8839d49b7b322bdf5b8a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _showInfo: 1
+  _explanation: 'Casts a ray in the direction of the closest object with tag [Player],
+
+    detecting
+    intersections with objects with tags [Wall,Destructable]'
+  description: 
+  type: 0
+  direction: 5
+  radius: 20
+  minDistance: 0
+  maxDistance: 1000
+  tags:
+  - {fileID: 11400000, guid: 5009fc6200a650247b168e79eceb4906, type: 2}
+  - {fileID: 11400000, guid: f1bf613cb53582041bf2e99c2eaa77e5, type: 2}
+  targetTransform: {fileID: 0}
+  dirTransform: {fileID: 0}
+  dirTag: {fileID: 11400000, guid: 1e7c9d7a9c88a3b41bc3a78e56999984, type: 2}
